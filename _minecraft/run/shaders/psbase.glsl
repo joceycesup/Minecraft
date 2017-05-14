@@ -32,11 +32,9 @@ void main (void) {
 	dist = unsmoothstep (unsmoothstep (dist));
 	//color *= vec4 (dist / 1.6 + 0.375, dist / 4.0 + 0.75, dist / 1.6 + 0.375, 1.0);
 
-	color.a = alpha;
-
 	gl_FragColor = color;
 	if (underWater > 0.5) {
-		gl_FragColor *= vec4( 0.2, 0.4, 1.0, 1.0);
+		gl_FragColor *= vec4( 0.2, 0.4, 1.0, alpha);
 	}
 	//else
 	{//*
@@ -44,6 +42,8 @@ void main (void) {
 			1.0 - skyColorFactor + skyColorFactor * skyColor.x,
 			1.0 - skyColorFactor + skyColorFactor * skyColor.y,
 			1.0 - skyColorFactor + skyColorFactor * skyColor.z,
-		1.0);//*/
+		alpha);//*/
 	}
+
+	//gl_FragColor.a = alpha;
 }

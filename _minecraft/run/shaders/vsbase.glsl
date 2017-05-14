@@ -38,13 +38,13 @@ void main () {
  	if (gl_Color.b > 0.9 && gl_Color.r < 0.1) // water cube
  	{
  		float tmp = vertexHeight(worldCoord.xy);
+ 		alpha = (tmp + 3.0) / 4.0;
+
 		if (underWater < 0.5) {
 			tmp += dist;
 		}
 
 		gl_Position = gl_ProjectionMatrix * gl_ModelViewMatrix * (gl_Vertex + vec4(0, 0, -1 + tmp, 0));
-
- 		alpha = (tmp + 3.0) / 4.0;
  	} else if (gl_Color.r > 0.9 && gl_Color.g > 0.9 && gl_Color.b < 0.1) {
  		gl_Position = gl_ProjectionMatrix * view * worldCoord;
  		alpha = 0.2;
